@@ -11,9 +11,9 @@
 	<name>AvengersAssembleBackEnd</name>
 	<url>http://maven.apache.org</url>
 
-	<properties>
+	<!-- <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+	</properties> -->
 
 	<dependencies>
 
@@ -38,16 +38,16 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc14</artifactId>
 			<version>10.0.0</version>
-		</dependency>
-		<dependency>
+		</dependency> -->
+		<!-- <dependency>
 			<groupId>com.fasterXml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.7.5</version>
-		</dependency>
+		</dependency> -->
 
 	</dependencies>
 </project>

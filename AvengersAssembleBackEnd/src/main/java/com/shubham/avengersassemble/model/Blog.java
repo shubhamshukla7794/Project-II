@@ -21,8 +21,8 @@ public class Blog
 	String blogContent;
 	Date createDate;
 	String loginname;
-	int likes;
-	int dislikes;
+	int upvotes;
+	int downvotes;
 	String status;
 	
 	
@@ -56,17 +56,17 @@ public class Blog
 	public void setLoginname(String loginname) {
 		this.loginname = loginname;
 	}
-	public int getLikes() {
-		return likes;
+	public int getUpvotes() {
+		return upvotes;
 	}
-	public void setLikes(int likes) {
-		this.likes = likes;
+	public void setUpvotes(int upvotes) {
+		this.upvotes = upvotes;
 	}
-	public int getDislikes() {
-		return dislikes;
+	public int getDownvotes() {
+		return downvotes;
 	}
-	public void setDislikes(int dislikes) {
-		this.dislikes = dislikes;
+	public void setDownvotes(int downvotes) {
+		this.downvotes = downvotes;
 	}
 	public String getStatus() {
 		return status;

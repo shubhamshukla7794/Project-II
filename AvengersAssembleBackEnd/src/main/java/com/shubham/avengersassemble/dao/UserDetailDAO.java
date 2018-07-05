@@ -7,5 +7,5 @@ public interface UserDetailDAO
 	public boolean registerUser(UserDetail userDetail);
 	public boolean updateUser(UserDetail userDetail);
 	public UserDetail getUser(String loginname);
-	public UserDetail checkUser(UserDetail userDetail);
+	public UserDetail validateUser(UserDetail userDetail);
 }

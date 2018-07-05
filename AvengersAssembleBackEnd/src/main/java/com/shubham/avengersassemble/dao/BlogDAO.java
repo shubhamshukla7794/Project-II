@@ -16,6 +16,6 @@ public interface BlogDAO
 	public boolean approveBlog(int blogId);
 	public boolean rejectBlog(int blogId);
 	
-	public boolean incLikes(int blogId);
-	public boolean disLikes(int blogId);
+	public boolean upVote(int blogId);
+	public boolean downVote(int blogId);
 }
