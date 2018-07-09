@@ -38,4 +38,27 @@ public class UserDetailDAOTestCase
 		
 		assertTrue("Problem Registering User", userDetailDAO.registerUser(user));
 	}
+	
+	@Test
+	public void updateUserTestCase()
+	{
+		UserDetail user = userDetailDAO.getUser("Peter");
+		user.setAddress("Queens, New York");
+		
+		assertTrue("Problem Updating User", userDetailDAO.updateUser(user));
+	}
+	
+	@Test
+	public void validateTestCase()
+	{
+		UserDetail user = new UserDetail();
+		user.setLoginname("Tony");
+		user.setPassword("tony@123");
+		
+		UserDetail userDetail = userDetailDAO.validateUser(user);
+		
+		assertNotNull("Problem validating User",userDetail);
+		
+		System.out.println(" Username :  "+userDetail.getUsername());
+	}
 }
