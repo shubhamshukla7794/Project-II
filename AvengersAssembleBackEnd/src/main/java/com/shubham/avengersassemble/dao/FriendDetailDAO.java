@@ -13,5 +13,6 @@ public interface FriendDetailDAO
 	public boolean sendFriendRequest(FriendDetail friend);
 	public boolean acceptFriendRequest(int friendId);
 	public boolean deleteFriendOrRequest(int friendId);
+	public FriendDetail getFriend(int friendId);
 	
 }

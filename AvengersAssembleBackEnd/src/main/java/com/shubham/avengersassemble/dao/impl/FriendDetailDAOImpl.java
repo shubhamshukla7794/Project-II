@@ -1,5 +1,6 @@
 package com.shubham.avengersassemble.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -24,7 +25,14 @@ public class FriendDetailDAOImpl implements FriendDetailDAO
 	//----------- Show All Friends of the User -----------
 	public List<FriendDetail> showFriends(String loginname) 
 	{
-		return null;
+		Session session = sessionfactory.openSession();
+		Query query = session.createQuery("from FriendDetail "
+										+ "where (friendLoginname=:floginname or loginname=:myloginname) "
+										+ "and status = 'A'");
+		query.setParameter("floginname", loginname);
+		query.setParameter("myloginname", loginname);
+		List<FriendDetail> friendlist = query.list();
+		return friendlist;
 	}
 
 	//----------- List Showing Pending Friend Request(s) -----------
@@ -41,7 +49,27 @@ public class FriendDetailDAOImpl implements FriendDetailDAO
 	//----------- List Showing Suggested Friend -----------
 	public List<UserDetail> showSuggestedFriend(String loginname) 
 	{
-		return null;
+		String str = "select loginname from UserDetail where ";
+		str = str + "(loginname not in(select friendloginname from FriendDetail where loginname='"+loginname+"' and status='A')";
+		str = str + "and";
+		str = str + "loginname not in(select loginname from FriendDetail where friendloginname='"+loginname+"' and status='A'))";
+		str = str + "and";
+		str = str + "loginname!='"+loginname+"'";
+		
+		Session session = sessionfactory.openSession();
+		Query query = session.createSQLQuery(str);
+		List<String> username =  query.list();
+		ArrayList<UserDetail> suggestedFriends = new ArrayList<UserDetail>();
+		
+		int i = 0;
+		while(i<username.size())
+		{
+			UserDetail userDetail = session.get(UserDetail.class, username.get(i));
+			suggestedFriends.add(userDetail);
+			i++;
+		}
+		
+		return suggestedFriends;
 	}
 
 	//----------- Send Friend Request -----------
@@ -94,6 +122,11 @@ public class FriendDetailDAOImpl implements FriendDetailDAO
 			System.out.println("Exception Info: "+e);
 			return false;
 		}
+	}
+
+	public FriendDetail getFriend(int friendId) 
+	{
+		return sessionfactory.getCurrentSession().get(FriendDetail.class,friendId);
 	}
 
 }

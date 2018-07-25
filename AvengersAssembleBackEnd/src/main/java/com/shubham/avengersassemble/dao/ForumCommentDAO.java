@@ -8,5 +8,6 @@ public interface ForumCommentDAO
 {
 	public boolean addForumComment(ForumComment forumComment);
 	public boolean deleteForumComment(ForumComment forumComment);
+	public ForumComment getForumComment(int id);
 	public List<ForumComment> getAllForumComments(int forumId);
 }

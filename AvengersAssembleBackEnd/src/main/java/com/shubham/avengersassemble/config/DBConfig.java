@@ -19,6 +19,7 @@ import com.shubham.avengersassemble.model.Forum;
 import com.shubham.avengersassemble.model.ForumComment;
 import com.shubham.avengersassemble.model.FriendDetail;
 import com.shubham.avengersassemble.model.JobDetail;
+import com.shubham.avengersassemble.model.ProfileImage;
 import com.shubham.avengersassemble.model.UserDetail;
 
 @Configuration
@@ -56,6 +57,7 @@ public class DBConfig
 		sessionFactoryBuilder.addAnnotatedClass(FriendDetail.class);
 		sessionFactoryBuilder.addAnnotatedClass(JobDetail.class);
 		sessionFactoryBuilder.addAnnotatedClass(UserDetail.class);
+		sessionFactoryBuilder.addAnnotatedClass(ProfileImage.class);
 
 		SessionFactory sessionFactory = sessionFactoryBuilder.buildSessionFactory();
 		System.out.println("---------- SessionFactory Object ----------");

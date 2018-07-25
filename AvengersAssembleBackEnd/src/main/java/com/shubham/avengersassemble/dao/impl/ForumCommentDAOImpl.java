@@ -68,5 +68,14 @@ public class ForumCommentDAOImpl implements ForumCommentDAO
 			System.out.println("Exception Info: "+e);
 			return null;
 		}
+	}
+
+	//----------- Get Forum Comment based on Id -----------
+	public ForumComment getForumComment(int id) 
+	{
+		Session session = sessionfactory.openSession();
+		ForumComment forumComment = (ForumComment) session.get(ForumComment.class, id);
+		session.close();
+		return forumComment;
 	}	
 }

@@ -14,10 +14,10 @@ public class FriendDetail
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="friendidseq")
-	int friendId;
-	String loginname;
-	String friendLoginname;	
-	String status;
+	private int friendId;
+	private String loginname;
+	private String friendLoginname;	
+	private String status;
 	
 	
 	public int getFriendId() {

@@ -10,6 +10,9 @@ public interface ForumDAO
 	public boolean deleteForum(Forum forum);
 	public boolean updateForum(Forum forum);
 	public Forum getForum(int forumId);
+	public boolean approveForum(int forumId);
+	public boolean rejectForum(int forumId);
 	
+	public List<Forum> approvedForumsList();
 	public List<Forum> listForums();
 }

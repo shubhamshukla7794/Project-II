@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table
 @SequenceGenerator(name="blogidseq",sequenceName="blogidseq")
@@ -16,14 +18,15 @@ public class Blog
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="blogidseq")
-	int blogId;
-	String blogName;
-	String blogContent;
-	Date createDate;
-	String loginname;
-	int upvotes;
-	int downvotes;
-	String status;
+	private int blogId;
+	private String blogName;
+	private String blogContent;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	private Date createDate;
+	private String loginname;
+	private int upvotes;
+	private int downvotes;
+	private String status;
 	
 	
 	public int getBlogId() {

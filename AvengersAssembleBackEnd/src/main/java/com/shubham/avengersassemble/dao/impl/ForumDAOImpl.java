@@ -15,7 +15,7 @@ import com.shubham.avengersassemble.model.Forum;
 
 @Repository("forumDAO")
 @Transactional
-public class ForumDAOImpl implements ForumDAO
+public class ForumDAOImpl implements ForumDAO 
 {
 	@Autowired
 	SessionFactory sessionfactory;
@@ -83,6 +83,58 @@ public class ForumDAOImpl implements ForumDAO
 			return null;
 		}
 	}
+	
+	//----------- Approves the Forum based upon Id -----------
+	public boolean approveForum(int forumId) 
+	{
+		try
+		{
+			Forum forum = getForum(forumId);
+			forum.setStatus("A");
+			sessionfactory.getCurrentSession().update(forum);
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Info: "+e);
+			return false;
+		}
+	}
+
+	//----------- Rejects the Forum based upon Id -----------
+	public boolean rejectForum(int forumId) 
+	{
+		try
+		{
+			Forum forum = getForum(forumId);
+			forum.setStatus("R");
+			sessionfactory.getCurrentSession().update(forum);
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Info: "+e);
+			return false;
+		}
+	}
+
+	//----------- Lists all the approved Forums -----------
+	public List<Forum> approvedForumsList() 
+	{
+		try
+		{
+			Session session = sessionfactory.openSession();
+			Query query = session.createQuery("from Forum where status = 'A'");
+			List<Forum> approvedForumsList = query.list();
+			session.close();
+			return approvedForumsList;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Info: "+e);
+			return null;
+		}
+	}
 
 	//----------- Lists all the Forums -----------
 	public List<Forum> listForums() 
@@ -101,5 +153,4 @@ public class ForumDAOImpl implements ForumDAO
 			return null;
 		}
 	}
-
 }

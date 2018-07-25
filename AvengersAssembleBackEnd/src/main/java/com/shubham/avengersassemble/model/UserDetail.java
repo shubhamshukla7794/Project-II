@@ -9,13 +9,13 @@ import javax.persistence.Table;
 public class UserDetail 
 {
 	@Id
-	String loginname;
-	String password;
-	String username;
-	String emailid;
-	String mobile;
-	String role;
-	String address;
+	private String loginname;
+	private String password;
+	private String username;
+	private String emailid;
+	private String mobile;
+	private String role;
+	private String address;
 	
 	
 	public String getLoginname() {

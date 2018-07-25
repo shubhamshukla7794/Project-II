@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table
 @SequenceGenerator(name="forumidseq",sequenceName="forumidseq")
@@ -16,12 +18,13 @@ public class Forum
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="forumidseq")
-	int forumId;
-	String forumName;
-	String forumContent;
-	Date createDate;
-	String loginname;
-	String status;
+	private int forumId;
+	private String forumName;
+	private String forumContent;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	private Date createDate;
+	private String loginname;
+	private String status;
 	
 	
 	public int getForumId() {

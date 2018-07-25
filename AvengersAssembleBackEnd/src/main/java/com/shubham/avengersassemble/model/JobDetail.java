@@ -16,14 +16,15 @@ public class JobDetail
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="jobidseq")
-	int jobId;
-	String designation;	
-	String rolesandResp;	
-	String company;
-	Date lastDate;	
-	String location;	
-	int ctc;
-	String skills;
+	private int jobId;
+	private String designation;	
+	private String rolesandResp;	
+	private String company;
+	private Date lastDate;	
+	private String location;	
+	private int ctc;
+	private String skills;
+	private int applied;
 	
 	
 	public int getJobId() {
@@ -73,6 +74,12 @@ public class JobDetail
 	}
 	public void setSkills(String skills) {
 		this.skills = skills;
+	}
+	public int getApplied() {
+		return applied;
+	}
+	public void setApplied(int applied) {
+		this.applied = applied;
 	}
 
 }
